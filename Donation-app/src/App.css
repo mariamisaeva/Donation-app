@@ -105,11 +105,24 @@ margin-bottom: 20px;
   grid-template-columns: repeat(2,1fr);
   gap: 5px;
 }
+.form-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.error{
+  
+  border: 1px solid red;
+  background: #ebebeb ;
+  padding: 10px;
+  margin: auto;
+}
+
 
 @media screen and (max-width:700px) {
   .donation-form{
     background-color:antiquewhite;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
     min-height: 100vh;
  }

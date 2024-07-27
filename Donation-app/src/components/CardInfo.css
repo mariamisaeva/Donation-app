@@ -1,0 +1,51 @@
+.card{
+    margin: 10px 0;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+.prev-btn{
+    background-color: none !important;
+    background: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: lighter;
+    cursor: pointer;
+
+}
+.card-2{
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.card-info-body{
+    display: flex;
+    flex-direction: column;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+}
+.form-head{
+    display: flex;
+    font-size: 15px;
+    font-weight: bold ;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+   
+}
+.form-head h2 {
+    font-size: 15px;
+    padding: 10px;
+   
+}
+.active {
+    border-bottom: 2px solid #1703ae;
+}
+.form-head h2 span{
+    color: red;
+    font-weight: bold;
+}
