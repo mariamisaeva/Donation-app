@@ -1,42 +1,116 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 50px 0;
+}
+
+.options{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+
+
+.donation-form{
+   background-color:antiquewhite;
+   width: 500px;
+   height: 100%;
+   padding: 10px;
+   margin: 0 auto;
+   border-radius: 5px;
+   min-height: 100vh;
+}
+.button-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  height: 20px;
+  margin: 5px;
+  background-color: #777d82;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none; 
+  font-size: 16px;
+  font-weight: 600;
   text-align: center;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.custom-amount {
+  background-color: #f8f9fa; 
+  color: #495057; 
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.custom-amount input[type="text"] {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.custom-amount input[type="text"]:focus {
+  outline: none;
+  border-color: #141415;
+  box-shadow: 0 0 0 0.2rem rgba(28, 28, 28, 0.25);
 }
 
-.card {
-  padding: 2em;
+.card-icon {
+  margin-left: 10px;
+  width: 20px;  /* Adjust size as needed */
+  height: auto;  /* Maintain aspect ratio */
+}
+.cards{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.banks{
+margin-bottom: 20px;
+}
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
 }
 
-.read-the-docs {
-  color: #888;
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider-text-wrapper {
+  padding: 0 10px;
+}
+
+.divider-text {
+  background: #f0f0f0; /* Same as body background to blend */
+  padding: 0 10px;
+  color: #666;
+  font-size: 12px;
+}
+.paypal-gpay{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2,1fr);
+  gap: 5px;
+}
+
+@media screen and (max-width:700px) {
+  .donation-form{
+    background-color:antiquewhite;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+ }
 }
