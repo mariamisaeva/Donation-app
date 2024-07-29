@@ -8,7 +8,22 @@
   display: grid;
   grid-template-columns: repeat(4,1fr);
 }
-
+.s-btn{
+  margin-top: 10px;
+  width: 100%;
+}
+.top-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin: 10px 0;
+  border-bottom: 1px solid #000;
+}
+.sa{
+  cursor: pointer;
+  font-weight: lighter;
+}
 
 .donation-form{
    background-color:antiquewhite;
