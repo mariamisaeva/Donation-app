@@ -1,40 +1,55 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Main from './components/Main';
 import './App.css';
-import LandingPage from './components/LandingPage';
-import CardInfo from './components/CardInfo';
-import { PageProvider, usePage } from './components/PageContext';
+import { PageProvider } from './components/PageContext';
+import Status from './components/Status';
 
-const App: React.FC = () => {
-  const { page, error } = usePage();
-
-  const handlePage = () => {
-    if (page === 0) {
-      return <LandingPage />;
-    } else {
-      return <CardInfo />;
-    }
-  };
-
+const App = () => {
   return (
-    <div className='container-md'>
-      <div className='donation-form'>
-        {
-        error &&  (
-          <div className='error'>{error}</div>
-        )
-        }
-        {
-        handlePage()
-        }
-      </div>
-    </div>
+    <Router>
+      <PageProvider>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/payment/status" element={<Status />} />
+        </Routes>
+      </PageProvider>
+    </Router>
   );
 };
 
-const AppWithProvider: React.FC = () => (
-  <PageProvider>
-    <App />
-  </PageProvider>
-);
+export default App;
 
-export default AppWithProvider;
+
+
+
+// card payment endpoint
+// const SECRET_KEY = process.env.SECRET_API;
+
+// if (!SECRET_KEY) {
+//   throw new Error(
+//     "Stripe secret key is not defined in the environment variables."
+//   );
+// }
+// app.post("/card-payment", async (req, res) => {
+//   try {
+//     const { amount } = req.body;
+
+//     if (!amount || amount <= 0) {
+//       return res.status(400).json({ error: "Invalid amount" });
+//     }
+
+//     const paymentIntent = await stripe.paymentIntents.create({
+//       amount: amount,
+//       currency: "eur",
+//       automatic_payment_methods: {
+//         enabled: true,
+//       },
+//     });
+
+//     res.json({ client_secret: paymentIntent.client_secret });
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
