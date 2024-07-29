@@ -15,7 +15,7 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ amount }) => {
   useEffect(() => {
     const fetchClientSecret = async () => {
       try {
-        const response = await fetch('http://localhost:3000/card-payment', {
+        const response = await fetch('http://localhost:3001/api/stripe/card-payment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ amount: amount * 100 }) // Correcting amount conversion to cents

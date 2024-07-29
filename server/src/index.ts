@@ -3,9 +3,10 @@ import cors from 'cors';
 import 'dotenv/config';
 import paypal from './paypal'; //paypal configuration
 import paypalRoutes from './routes/paypalRoutes';
+import stripeRoutes from './routes/stripeRoutes'
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -17,6 +18,7 @@ app.get('/', async (req: Request, res: Response) => {
 
 //MAIN ROUTES
 app.use('/api/paypal', paypalRoutes);
+app.use('/api/stripe', stripeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
