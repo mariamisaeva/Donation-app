@@ -1,0 +1,16 @@
+.btn-div {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.paypal-btn {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+}

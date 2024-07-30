@@ -4,12 +4,14 @@ import { usePage } from './PageContext';
 import Options from './Options';
 import visa from '../assets/visa_5968299.png';
 import master from '../assets/business_15801129.png';
+import PaypalButton from './PayPal-Btn/PaypalButton';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const LandingPage: React.FC = () => {
-  const { page, setPage, setSelectedAmount, selectedAmount, setError } = usePage();
+  const { page, setPage, setSelectedAmount, selectedAmount, setError } =
+    usePage();
   const [customAmount, setCustomAmount] = useState<string>('');
   const [isDropDown, setIsDropDown] = useState<boolean>(false);
-  
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAmount(Number(e.target.value));
@@ -19,16 +21,14 @@ const LandingPage: React.FC = () => {
     setCustomAmount(e.target.value);
     setSelectedAmount(Number(e.target.value));
   };
-const handlePage = () =>{
-    if(selectedAmount){
-      setError(null)
-      setPage(page + 1)
+  const handlePage = () => {
+    if (selectedAmount) {
+      setError(null);
+      setPage(page + 1);
+    } else {
+      setError('Please choose a contribution amount before continuing!');
     }
-    else {
-        setError('Please choose a contribution amount before continuing!')
-    }
-        
-}
+  };
   const handleIdeal = () => {
     setIsDropDown(!isDropDown);
   };
@@ -93,8 +93,13 @@ const handlePage = () =>{
         </div>
       </div>
       <div className="paypal-gpay">
-        <button type="button" className="btn btn-primary">Paypal</button>
-        <button type="button" className="btn btn-primary">G-pay</button>
+        {/* <button type="button" className="btn btn-primary">
+          Paypal
+        </button> */}
+
+        <PaypalButton amount={selectedAmount ?? 0} />
+
+        <button type="button">G-pay</button>
       </div>
     </>
   );

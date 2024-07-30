@@ -19,8 +19,12 @@ export const createPayment = async (req: Request, res: Response) => {
   console.log('In CREATE_PAYMENT FUNCTION'); /////
 
   const amount = req.body.amount;
-  const encodedAmount = encodeURIComponent(amount);
-  console.log('encodedAmount: ', encodedAmount);
+  //   const encodedAmount = encodeURIComponent(amount);
+  //   console.log('encodedAmount: ', encodedAmount);
+  console.log('Amount: ', amount);
+  if (!amount) {
+    return res.status(400).json({ Error: 'Amount is required' });
+  }
   //   const token = generateToken({ amount });
 
   const create_payment_json = {
@@ -29,8 +33,8 @@ export const createPayment = async (req: Request, res: Response) => {
       payment_method: 'paypal',
     },
     redirect_urls: {
-      return_url: 'http://localhost:3000/api/paypal/success',
-      cancel_url: 'http://localhost:3000/cancelled',
+      return_url: 'http://localhost:3001/api/paypal/success',
+      cancel_url: 'http://localhost:3001/cancelled',
     },
     transactions: [
       {
