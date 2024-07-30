@@ -1,7 +1,5 @@
 import React from 'react';
-
-import usePaymentStatus from './PaymentStatus';
-
+import usePaymentStatus from './usePaymentStatus.tsx';
 
 const Status: React.FC = () => {
   const status = usePaymentStatus();
