@@ -9,44 +9,7 @@ interface paypalButtonProps {
 }
 
 const PaypalButton: React.FC<paypalButtonProps> = ({ amount }) => {
-  console.log('Amount: ', amount);
-
-  //   const [{ isPending }, dispatch] = usePayPalScriptReducer();
-
-  //   React.useEffect(() => {
-  //     dispatch({
-  //       type: 'setOptions' as any,
-  //       value: {
-  //         clientId: 'YOUR_PAYPAL_CLIENT_ID', // Replace with your actual PayPal client ID
-  //         currency: 'USD',
-  //       },
-  //     });
-  //   }, [dispatch]);
-
-  //   const createOrder = (data: any, actions: any) => {
-  //     return fetch('/api/paypal/create-payment', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ amount }),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((order) => order.approvalUrl);
-  //   };
-
-  //   const onApprove = (data: any, actions: any) => {
-  //     return fetch(
-  //       `/api/paypal/success?paymentId=${data.paymentID}&PayerID=${data.payerID}`,
-  //       {
-  //         method: 'GET',
-  //       },
-  //     )
-  //       .then((response) => response.json())
-  //       .then((details) => {
-  //         alert('Transaction completed by ' + details.payer.name.given_name);
-  //       });
-  //   };
+  console.log('Amount: ', amount); ////
 
   const handlePayment = async () => {
     try {
@@ -56,7 +19,7 @@ const PaypalButton: React.FC<paypalButtonProps> = ({ amount }) => {
       );
       const { approvalUrl } = response.data;
       if (approvalUrl) {
-        window.location.href = approvalUrl; // Redirect to PayPal approval URL
+        window.location.href = approvalUrl; //Redirect to PayPal approval-URL
       } else {
         console.error('No approval URL found.');
       }
@@ -70,12 +33,6 @@ const PaypalButton: React.FC<paypalButtonProps> = ({ amount }) => {
       Paypal
     </button>
   );
-  //   return (
-  //     <>
-  //       {isPending ? <div>Loading...</div> : null}
-  //       <PayPalButtons createOrder={createOrder} onApprove={onApprove} />
-  //     </>
-  //   );
 };
 
 export default PaypalButton;

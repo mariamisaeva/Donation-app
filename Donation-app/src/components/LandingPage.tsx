@@ -5,7 +5,6 @@ import Options from './Options';
 import visa from '../assets/visa_5968299.png';
 import master from '../assets/business_15801129.png';
 import PaypalButton from './PayPal-Btn/PaypalButton';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const LandingPage: React.FC = () => {
   const { page, setPage, setSelectedAmount, selectedAmount, setError } =
@@ -93,10 +92,6 @@ const LandingPage: React.FC = () => {
         </div>
       </div>
       <div className="paypal-gpay">
-        {/* <button type="button" className="btn btn-primary">
-          Paypal
-        </button> */}
-
         <PaypalButton amount={selectedAmount ?? 0} />
 
         <button type="button">G-pay</button>
