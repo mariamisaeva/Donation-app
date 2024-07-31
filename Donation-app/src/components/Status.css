@@ -1,0 +1,62 @@
+@keyframes scaleUp {
+    from {
+        transform: scale(0); 
+        opacity: 0;         
+    }
+    to {
+        transform: scale(1);  
+        opacity: 1;        
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.st-img {
+    width: 50px;
+    padding: 20px;
+    animation: scaleUp .3s ease-out; 
+}
+
+.container {
+    width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    margin-top: 20px;
+    color: #fff;
+    background: #000 !important;
+}
+
+.proc {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-bottom: 2px solid #16ad11;
+    animation: spin 1s linear infinite;
+}
+
+
+
+
+
+
+
