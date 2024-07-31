@@ -25,7 +25,6 @@ const usePaymentStatus = () => {
         switch (paymentIntent.status) {
           case 'succeeded':
             setStatus('Success! Payment received.');
-            console.log(status)
             break;
           case 'processing':
             setStatus("Payment processing. We'll update you when payment is received.");
@@ -45,7 +44,7 @@ const usePaymentStatus = () => {
     });
   }, [stripe, setStatus]);
 
-  return status;
+  return {status};
 };
 
 export default usePaymentStatus;
