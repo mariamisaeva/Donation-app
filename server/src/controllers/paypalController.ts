@@ -34,7 +34,7 @@ export const createPayment = async (req: Request, res: Response) => {
     },
     redirect_urls: {
       return_url: 'http://localhost:3000/api/paypal/success',
-      cancel_url: 'http://localhost:3000/cancelled',
+      cancel_url: 'http://localhost:3000/api/paypal/cancel',
     },
     transactions: [
       {
@@ -81,20 +81,7 @@ export const executePayment = async (req: Request, res: Response) => {
 
   const payerId = req.query.PayerID as string;
   const paymentId = req.query.paymentId as string;
-  //   const amount = req.body.amount;
 
-  //   console.log(amount);
-
-  //   const token = req.query.token as string;
-  //   const { payerId, paymentId } = req.query;
-  //   console.log('jwtToken: ', jwtToken);
-  //   if (!payerId || !paymentId || !jwtToken) {
-  //     res.status(500).json({ Error: 'Payment Error' });
-  //     return;
-  //   }
-
-  //   const amount = verifyTokenAndExtractAmount(jwtToken, res);
-  //   if (!amount) return;
   try {
     // Retrieve the payment details to get the amount
     const paymentDetails = await new Promise<PayPalPayment>(
@@ -127,12 +114,15 @@ export const executePayment = async (req: Request, res: Response) => {
       if (err) {
         res.status(500).json({ Error: err.message });
       } else {
-        //   res.json('Payment Successful');
-        return res.json({ message: 'Payment Successful', payment });
+        return res.send('Payment Successful');
         //   console.log(JSON.stringify({ payment }));
       }
     });
   } catch (error: any) {
     res.status(500).json({ Error: error.message });
   }
+};
+
+export const paymentCancellation = (req: Request, res: Response) => {
+  res.send('Payment Cancelled');
 };

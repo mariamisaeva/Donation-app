@@ -1,10 +1,10 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import paypal from './paypal'; //paypal configuration
+// import paypal from './paypal'; //paypal configuration
 import paypalRoutes from './routes/paypalRoutes';
 import stripeRoutes from './routes/stripeRoutes';
-import crypto from 'crypto';
+// import crypto from 'crypto';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

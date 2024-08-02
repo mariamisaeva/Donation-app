@@ -1,6 +1,5 @@
 import React from 'react';
-// import { useEffect, useState } from 'react';
-// import { usePayPalScriptReducer, PayPalButtons } from '@paypal/react-paypal-js';
+import { usePage } from '../../components/PageContext';
 import axios from 'axios';
 import './paypal-btn.css';
 
@@ -9,9 +8,12 @@ interface paypalButtonProps {
 }
 
 const PaypalButton: React.FC<paypalButtonProps> = ({ amount }) => {
-  console.log('Amount: ', amount); ////
-
+  const { setError } = usePage();
   const handlePayment = async () => {
+    if (amount <= 0) {
+      setError('Please choose a contribution amount before continuing!');
+    }
+
     try {
       const response = await axios.post(
         'http://localhost:3000/api/paypal/create-payment',
