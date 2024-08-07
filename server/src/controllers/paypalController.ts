@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import paypal from '../paypal';
-import { generateToken, verifyTokenAndExtractAmount } from '../util/jwtUtil';
 
 //TYPES (execute-payment)
 interface paypalTransaction {
@@ -16,16 +15,10 @@ interface PayPalPayment {
 
 //Create Payment Request
 export const createPayment = async (req: Request, res: Response) => {
-  console.log('In CREATE_PAYMENT FUNCTION'); /////
-
   const amount = req.body.amount;
-  //   const encodedAmount = encodeURIComponent(amount);
-  //   console.log('encodedAmount: ', encodedAmount);
-  console.log('Amount: ', amount);
   if (!amount) {
     return res.status(400).json({ Error: 'Amount is required' });
   }
-  //   const token = generateToken({ amount });
 
   const create_payment_json = {
     intent: 'sale',
@@ -60,11 +53,8 @@ export const createPayment = async (req: Request, res: Response) => {
 
   paypal.payment.create(create_payment_json, async function (error, payment) {
     if (error) {
-      console.log(error);
       res.status(500).json({ Error: error.message });
     } else {
-      console.log('Create Payment Response'); /////
-
       const approvalUrl = payment.links?.find(
         (link) => link.rel === 'approval_url',
       )?.href;
@@ -76,9 +66,6 @@ export const createPayment = async (req: Request, res: Response) => {
 
 //Execute Payment
 export const executePayment = async (req: Request, res: Response) => {
-  console.log('In EXECUTE_PAYMENT FUNCTION'); //////
-  console.log('REQUEST.QUERY:\n', req.query);
-
   const payerId = req.query.PayerID as string;
   const paymentId = req.query.paymentId as string;
 
