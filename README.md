@@ -11,7 +11,6 @@
 5. [Error Handling](#error-handling)
 6. [Payment Methods](#payment-methods)
 7. [Contributing](#contributing)
-8. [License](#license)
 
 ## Introduction
 
